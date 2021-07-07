@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+
+        <!-- HTML 조립하기(load 메서드) -->
+        <script>
+            
+            $(function() {
+                $("#newsWrap_1")
+                .load("news.html #news_1");
+                $("#newsWrap_2")
+                .load("news.html #news_2");
+            });
+        </script>
+
+    </head>
+
+    <body>
+
+        <div id="newsWrap_1"></div>
+        <div id="newsWrap_2"></div>
+    </body>
+</html>

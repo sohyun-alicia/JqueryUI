@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <!-- php 기본문법
+        <?
+            php 코드
+        ?>
+    
+        <?
+            $변수명 = 값;
+        ?>
+        -->
+        <script>
+            $(function() {
+            $.ajax({
+                url: "news.php",
+                dataType: "xml",
+                success: function(data) {
+                    var $data = $(data).find("item");
+
+                    if ($data.length > 0) {
+                        $items = $items.slice(0, 10);
+                        var $ulTag = $("<ul />");
+                        $.each($data, function(i, o) {
+                            var $title = $(o).find("title").text();
+                            var $link = $(o).find("link").text();
+                            
+                            var $aTag = $("<a/>")
+                                .attr({
+                                    "href":$link,
+                                    "target" : "_balnk"
+                                })
+                                .text($title);
+                            var $liTag=$("<li/>")
+                                .append($aTag);
+                            
+                            $ulTag.append($liTag);
+                        });
+                        $(".wrap").append($ulTag);
+                                
+                        }
+                    }
+                });
+            });
+       
+        </script>
+
+    </head>
+
+    <body>
+
+        <div class="wrap">
+
+        </div>
+    </body>
+
+        
+</html>
